@@ -1,0 +1,22 @@
+from stack import Stack
+
+
+def baseConverter(decNumber, base):
+    digits = "0123456789ABCDEF"
+    remstack = Stack()
+
+    while decNumber > 0:
+        rem = decNumber % base
+        remstack.push(rem)
+        decNumber = decNumber / base
+
+    newString = ""
+    while not remstack.isEmpty():
+        newString = newString + digits[remstack.pop()]
+
+    return newString
+
+
+if __name__ == "__main__":
+    print baseConverter(15, 2)
+    print baseConverter(17, 16)
